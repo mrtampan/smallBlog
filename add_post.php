@@ -1,14 +1,16 @@
 <?php
 include "koneksi.php";
+include "validate_token.php";
 // $koneksi = mysqli_connect("localhost", "root", "", "small_blog");
 $judul = $_POST['judul'];
 $isi = $_POST['isi'];
 $gambar = $_POST['gambar'];
+$idKategori = $_POST['id_kategori'];
 $linking = $_POST['linking'];
 
 session_start();
 $user = $_SESSION['username'];
-$posting = mysqli_query($koneksi, "INSERT INTO post (judul, isi, img, linking) VALUES ('$judul', '$isi', '$gambar', '$linking')");
+$posting = mysqli_query($koneksi, "INSERT INTO post (judul, isi, img, linking, id_kategori) VALUES ('$judul', '$isi', '$gambar', '$linking', '$idKategori')");
 $query = mysqli_query($koneksi, "SELECT * FROM admin a where a.username = '$user' ");
 
 if($query && $_SESSION['status']=="login"){
@@ -22,7 +24,7 @@ if($query && $_SESSION['status']=="login"){
         header('Content-Type: application/json');
         echo json_encode($result);
 
-        $tailwind = "<link href='https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css' rel='stylesheet'>";
+        $tailwind = "<meta name='viewport' content='width=device-width, initial-scale=1.0'><link href='https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css' rel='stylesheet'>";
         $head = file_get_contents("head.php");
         $myfile = fopen($linking . ".html", "w") or die("Unable to open file!");
         $txt = $tailwind;

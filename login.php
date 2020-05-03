@@ -3,8 +3,9 @@
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine-ie11.min.js" defer></script>
 <script src="global.js"></script>
 </head>
-<div class="w-full max-w-sm mx-auto" x-data="datanya()">
-<div class="md:flex md:items-center mb-6 mt-10">
+<div class="w-full max-w-sm mx-auto rounded overflow-hidden shadow-lg p-5" x-data="datanya()">
+<div class="text-center font-bold mt-3 text-xl text-teal-500" style=""> Login </div>
+<div class="md:flex md:items-center mb-6 mt-6">
     <div class="md:w-1/3">
       <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
         Username
@@ -27,7 +28,7 @@
   <div class="md:flex md:items-center">
     <div class="md:w-1/3"></div>
     <div class="md:w-2/3">
-      <button x-on:click="submitLogin(username, password)" class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
+      <button x-on:click="submitLogin(username, password)" class="shadow bg-green-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
         Login
       </button>
     </div>
@@ -57,6 +58,7 @@ function submitLogin (param1, param2) {
     console.log('Success:', result);
     console.log(result.success);
     if(result.success){
+      localStorage.setItem("token", result.token);
       window.location.href = baseUrl + '/admin?pages=';
     }else {
       alert("Email dan Password salah")

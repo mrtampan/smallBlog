@@ -1,14 +1,28 @@
 <?php 
+error_reporting();
 include "../koneksi.php";
   $halaman = 10;
   $page = isset($_GET["pages"]) ? (int)$_GET["pages"] : 1;
   $mulai = ($page>1) ? ($page * $halaman) - $halaman : 0;
-  $result = mysqli_query($koneksi, "SELECT * FROM post");
+  $result = "";
+  if(isset($_GET['search'])){
+    $search = $_GET["search"];
+    $result = mysqli_query($koneksi, "SELECT * FROM post WHERE judul LIKE '%$search%' ");
+  }else {
+    $result = mysqli_query($koneksi, "SELECT * FROM post");
+  }
   $total = mysqli_num_rows($result);
   $pages = ceil($total/$halaman);
   $prevPage = ($page<=1) ? 1 : $page-1;
-  $nextPage = $page+1;            
-  $query = mysqli_query($koneksi, "SELECT * FROM post ORDER BY id_post DESC LIMIT $mulai, $halaman")or die(mysqli_error);
+  $nextPage = $page+1;
+  $query = "";
+  if(isset($_GET["search"])){
+    $search = $_GET["search"];
+    $query = mysqli_query($koneksi, "SELECT a.id_post, a.judul, a.isi, a.img, a.linking, b.nama AS namaKategori FROM post a LEFT JOIN kategori b ON a.id_kategori = b.id_kategori WHERE judul LIKE '%$search%' ORDER BY id_post DESC");
+    // $query = mysqli_query($koneksi, "SELECT * FROM post WHERE judul LIKE '%$search%' ORDER BY id_post DESC LIMIT $mulai, $halaman");
+  } else{
+    $query = mysqli_query($koneksi, "SELECT a.id_post, a.judul, a.isi, a.img, a.linking, b.nama AS namaKategori FROM post a LEFT JOIN kategori b ON a.id_kategori = b.id_kategori ORDER BY id_post DESC LIMIT $mulai, $halaman");
+  }           
   $jsonData['data'] = array();
   $jsonData = array("halaman" => $halaman, "page" => $page, "totalPage" => $pages, "perPost" => $total, "nextPage" => $nextPage, "prevPage" => $prevPage);
   while ($data = mysqli_fetch_assoc($query)) {
@@ -17,7 +31,8 @@ include "../koneksi.php";
         "judul" => $data['judul'],
         "isi" => $data['isi'],
         "img" => $data['img'],
-        "linking" => $data['linking']
+        "linking" => $data['linking'],
+        "kategori" => $data['namaKategori']
     );
   }
 

@@ -1,6 +1,5 @@
-<script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
-<script src="../global.js"></script>
-<div class="w-full max-w-lg mx-auto mt-8" x-data="datanya()">
+<script src="https://cdn.ckeditor.com/4.4.5/standard-all/ckeditor.js"></script>
+<div class="w-full max-w-lg mx-auto mt-8" x-data="datanya()" x-init="initku()">
 <div class="flex flex-wrap -mx-3 mb-6">
     <div class="w-full px-3">
       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
@@ -27,16 +26,39 @@
   </div>
   <div class="flex flex-wrap -mx-3 mb-6">
     <div class="w-full px-3">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+        Kategori
+      </label>
+      <div class="inline-block relative w-64">
+        <select x-model="selectKategori" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+        <option>Pilih Kategori</option>
+        <template x-if="listKategori" x-for="(list, index) in listKategori" :key="index">
+          <option x-text="listKategori[index].nama" x-bind:value="listKategori[index].id_kategori"></option>
+        </template>  
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="flex flex-wrap -mx-3 mb-6">
+    <div class="w-full px-3">
       <button x-on:click="submitForm" class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" >Simpan Post</button>
     </div>
   </div>
   
 </div>
 <script>
- CKEDITOR.replace( 'editor1' );
+ CKEDITOR.replace( 'editor1',
+ {
+    script: true,
+    allowedContent :true,
+    extraPlugins: 'codesnippet',
+    codeSnippet_theme: 'magula'
+});
 function datanya() {
     return {
         judul: '',
+        listKategori: '',
+        selectKategori: '',
         submitForm() {
             const formData = new FormData();
             var imgBase64;
@@ -56,6 +78,8 @@ function datanya() {
                     formData.append('isi', CKEDITOR.instances.editor1.getData());
                     formData.append('gambar', imgBase64);
                     formData.append('linking', this.judul.split(' ').join('-'));
+                    formData.append('id_kategori', this.selectKategori);
+                    formData.append('token', localStorage.getItem("token"));
                     fetch(baseUrl + './add_post.php', {
                         method: 'POST',
                         body: formData
@@ -75,6 +99,20 @@ function datanya() {
             prosesReader.then(function(result){
                 console.log('Berhasil upload gambar');
             })
+        },
+        initku() {
+          fetch(baseUrl + '/admin/get_kategori.php', {
+            method: 'GET'
+          })
+          .then((response) => response.json())
+          .then((result) => {
+            
+            this.listKategori= result.data;
+            console.log(result.data);
+          })
+          .catch((error) => {
+            console.error('Error:', error);
+          });
         }
     }
 }

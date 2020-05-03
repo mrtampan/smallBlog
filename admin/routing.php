@@ -1,9 +1,21 @@
 <?php
-$request = $_GET['pages'];
+
+if(!isset($_GET['pages'])){
+    $request = '';    
+}else{
+    $request = $_GET['pages'];
+}
+
 
 switch ($request) {
     case '' :
         require 'body.php';
+        break;
+    case 'kategori' :
+        require 'kategori/body.php';
+        break;
+    case 'add-kat' :
+        require 'kategori/add.php';
         break;
     case 'add' :
         require 'add.php';
