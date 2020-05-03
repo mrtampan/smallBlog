@@ -33,7 +33,7 @@ if($query && $_SESSION['status']=="login"){
         fwrite($myfile, $txt);
         $txt = $head;
         fwrite($myfile, $txt);
-        $txt = "<div class='container mx-auto bg-gray-100 rounded p-4 h-auto'><h1 class='my-3 text-3xl font-bold'>" . $judul . "</h1><div class='clear-both'></div>";
+        $txt = "<div class='container mx-auto bg-gray-100 rounded p-4 h-full'><h1 class='my-3 text-3xl font-bold'>" . $judul . "</h1><div class='clear-both'></div>";
         fwrite($myfile, $txt);
         $txt = "<div class='flex justify-center mb-3'><img class='max-w-lg' src='" . $gambar . "' alt='" . $judul . "' /></div><div class='clear-both'></div>";
         fwrite($myfile, $txt);
