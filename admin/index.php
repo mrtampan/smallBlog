@@ -10,9 +10,10 @@ Admin Small Blog
 <body>
 <script src="../global.js"></script>
 	<?php 
+	error_reporting(0);
     session_start();
 	if($_SESSION['status']!="login" && $_SESSION['username'] == null ){
-		header("location:../");
+		echo "<script>window.location.href = baseUrl + '/'</script>";
 	}
 	?>
 <?php

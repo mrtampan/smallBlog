@@ -52,7 +52,7 @@
 <div id="mySidenav" class="sidenav bg-gray-900">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="?pages=kategori">Kategori</a>
-  <a href="logout.php" class="inline-block text-sm mx-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-black-500 hover:bg-white mt-4 lg:mt-0">Logout</a>
+  <a href="?pages=keluar" class="inline-block text-sm mx-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-black-500 hover:bg-white mt-4 lg:mt-0">Logout</a>
 </div>
 
 <script>

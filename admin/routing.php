@@ -23,6 +23,9 @@ switch ($request) {
     case 'edit' :
         require 'edit.php';
         break;
+    case 'keluar' :
+        require 'logout.php';
+        break;
     default:
         require 'body.php';
         break;
