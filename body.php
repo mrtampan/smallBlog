@@ -4,7 +4,7 @@
 }
 </style>
 <div x-data="datanya()" x-init="initku(1)">
-
+<?php include "loading.php"; ?>
 <div id="mySidenav" class="sidenav bg-teal-500">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="" >Home</a>
@@ -44,6 +44,7 @@
 <script>
 function datanya() {
   return {
+    loadShow: true,
     listData: null,
     pagin: null,
     page: null,
@@ -63,6 +64,7 @@ function datanya() {
         .then((response) => response.text())
         .then((result) => {
           
+          this.loadShow = false;
           this.listData = JSON.parse(result).data;
           this.pagin = JSON.parse(result);
           this.totalPage = JSON.parse(result).totalPage;
@@ -107,6 +109,7 @@ function datanya() {
       ahref.click();
     },
     cari() {
+      this.loadShow = true;
       this.initku(1, this.searchprm)
     },
     getKategori() {
@@ -124,12 +127,13 @@ function datanya() {
       });
     },
     fetchDataKategori(param1) {
+      this.loadShow = true;
       fetch(baseUrl + '/admin/get_data_kategori.php?kategori=' + param1, {
           method: 'GET'
         })
         .then((response) => response.text())
         .then((result) => {
-          
+          this.loadShow = false;
           this.listData = JSON.parse(result).data;
         })
         .catch((error) => {
