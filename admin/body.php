@@ -102,7 +102,7 @@ function datanya() {
         formData.append('linking', param2);
         formData.append('token', localStorage.getItem("token"));
 
-        fetch(baseUrl + './delete_post.php', {
+        fetch(baseUrl + '/delete_post.php', {
           method: 'POST',
           body: formData
         })
