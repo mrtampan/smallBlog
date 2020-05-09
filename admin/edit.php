@@ -97,7 +97,7 @@ function datanya() {
                         formData.append('idPost', this.id_post);
                         formData.append('id_kategori', this.selectKategori);
                         formData.append('token', localStorage.getItem("token"));
-                        fetch(baseUrl + './edit_post.php', {
+                        fetch(baseUrl + '/edit_post.php', {
                             method: 'POST',
                             body: formData
                         })

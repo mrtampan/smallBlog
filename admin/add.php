@@ -80,7 +80,7 @@ function datanya() {
                     formData.append('linking', this.judul.split(' ').join('-'));
                     formData.append('id_kategori', this.selectKategori);
                     formData.append('token', localStorage.getItem("token"));
-                    fetch(baseUrl + './add_post.php', {
+                    fetch(baseUrl + '/add_post.php', {
                         method: 'POST',
                         body: formData
                     })
