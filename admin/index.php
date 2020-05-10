@@ -9,13 +9,20 @@ Admin Small Blog
 </head>
 <body>
 <script src="../global.js"></script>
-	<?php 
-	error_reporting(0);
-    session_start();
-	if($_SESSION['status']!="login" && $_SESSION['username'] == null ){
-		echo "<script>window.location.href = baseUrl + '/'</script>";
-	}
-	?>
+<script>
+let checkSign = '';
+
+checkSign = localStorage.getItem("token");
+if(checkSign == '' || checkSign == null || checkSign == undefined) {
+	window.location.href = baseUrl + '/'
+}
+</script>
+<?php 
+// session_start();
+// 	if($_SESSION['status']!="login"){
+// 	 echo "<script>window.location.href = baseUrl + '/'</script>";
+// 	}
+?>
 <?php
 include "head.php";
 ?>
