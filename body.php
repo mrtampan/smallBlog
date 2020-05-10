@@ -27,7 +27,7 @@
     <div class="flex flex-wrap justify-center">
       <template x-if="listData" x-for="(list, index) in listData" :key="index">
       <div class="md:w-1/4 mb-4 lg:flex px-3" x-on:click="viewPost(listData[index].linking)">
-      <img class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" x-bind:src="listData[index].img" alt="Sunset in the mountains">
+      <img class="border-b border-t border-l border-r border-gray-400 h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" x-bind:src="listData[index].img" alt="Sunset in the mountains">
         <div class="w-full border-r border-b border-l border-gray-400 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
           <div class="mb-8">
             <div class="text-gray-900 font-bold text-xl mb-2" x-text="listData[index].judul"></div>
