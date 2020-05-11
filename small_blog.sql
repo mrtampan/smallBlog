@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 03, 2020 at 11:55 AM
+-- Generation Time: May 12, 2020 at 12:10 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -70,7 +70,7 @@ CREATE TABLE `post` (
   `judul` varchar(50) NOT NULL,
   `isi` text NOT NULL,
   `img` longtext NOT NULL,
-  `linking` varchar(30) DEFAULT NULL,
+  `linking` varchar(100) DEFAULT NULL,
   `id_kategori` int(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
