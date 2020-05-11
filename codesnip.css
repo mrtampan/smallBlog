@@ -12,6 +12,7 @@ pre {
 pre code {
     display: block;
     line-height: 1.5rem;
+    overflow: auto;
 }
 /* pre code:before {
     counter-increment: line;
