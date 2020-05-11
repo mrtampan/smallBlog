@@ -2,7 +2,9 @@
 <div class="" x-data="datanya()" x-init="initku(1)">
 <div class="float-right"><button x-on:click="addPost" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-4">Tambah Postingan</button></div>
 <div class="clear-both"></div>
-<table class="table-auto mx-auto p-4 mt-3 border">
+<div class="flex flex-col">
+<div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
+<table class="min-w-full mx-auto p-4 mt-3 border">
   <thead>
     <tr>
       <th class="px-4 py-2">Judul</th>
@@ -19,11 +21,13 @@
       <td class="border px-4 py-2" x-html="listData[index].isi.substr(0,50)"></td>
       <td class="border px-4 py-2" ><img x-bind:src="listData[index].img" height="150" width="150" /></td>
       <td class="border px-4 py-2" x-text="listData[index].kategori"></td>
-      <td class="border px-4 py-2"><button x-on:click="editPost(listData[index].id_post)" class="bg-blue-500 hover:bg-blue-700 text-white font-bold p-4 mx-2 rounded">Edit</button><button x-on:click="deletePost(listData[index].id_post, listData[index].linking)" class="bg-blue-500 hover:bg-blue-700 text-white font-bold p-4 mx-2 rounded">Delete</button></td>
+      <td class="border px-4 py-2 whitespace-no-wrap"><button x-on:click="editPost(listData[index].id_post)" class="bg-blue-500 hover:bg-blue-700 text-white font-bold p-4 mx-2 rounded">Edit</button><button x-on:click="deletePost(listData[index].id_post, listData[index].linking)" class="bg-blue-500 hover:bg-blue-700 text-white font-bold p-4 mx-2 rounded">Delete</button></td>
       </tr>
     </template>
   </tbody>
 </table>
+</div>
+</div>
 <ul class="flex list-reset rounded items-center justify-center font-sans mt-3" x-html="pagehtml()">
 </ul>
 </div>
