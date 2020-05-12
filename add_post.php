@@ -7,10 +7,11 @@ $isi = $_POST['isi'];
 $gambar = $_POST['gambar'];
 $idKategori = $_POST['id_kategori'];
 $linking = $_POST['linking'];
+$isidb = mysqli_real_escape_string($koneksi, $_POST['isi']);
 
 session_start();
 $user = $_SESSION['username'];
-$posting = mysqli_query($koneksi, "INSERT INTO post (judul, isi, img, linking, id_kategori) VALUES ('$judul', '$isi', '$gambar', '$linking', '$idKategori')");
+$posting = mysqli_query($koneksi, "INSERT INTO post (judul, isi, img, linking, id_kategori) VALUES ('$judul', '$isidb', '$gambar', '$linking', '$idKategori')");
 $query = mysqli_query($koneksi, "SELECT * FROM admin a where a.username = '$user' ");
 
 if($query && $_SESSION['status']=="login"){
