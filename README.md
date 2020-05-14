@@ -1,8 +1,9 @@
 Project Blog ringan resource.
 
-Dependency library
+Dependency library terminal
 
-terminal ketik: composer install
+ketik: composer install
+
 
 Deployment public_html atau www: 
 
