@@ -1,14 +1,20 @@
-Project Blog ringan resource.
+# Small Blog
 
-Dependency library terminal
+Project blog small resource
 
-ketik: composer install
+## Installation
 
+```bash
+composer install
+```
 
-Deployment public_html atau www: 
+## Deployment to Server Public_html and www
 
-Hapus /smallBlog di global.js
+```c
+Delete "/smallBlog" in the global.js file
 
-Ubah /smallBlog jadi / di .htaccess 
+Change "/smallBlog" to "/" in the .htaccess file
 
-Hapus /smallBlog di routing.php 
+Delete "/smallBlog" in the routing.php file 
+
+```
