@@ -7,9 +7,9 @@ include "../koneksi.php";
   $result = "";
   if(isset($_GET['search'])){
     $search = $_GET["search"];
-    $result = mysqli_query($koneksi, "SELECT * FROM post WHERE judul LIKE '%$search%' ");
+    $result = mysqli_query($koneksi, "SELECT * FROM post WHERE judul LIKE '%$search%'");
   }else {
-    $result = mysqli_query($koneksi, "SELECT * FROM post");
+    $result = mysqli_query($koneksi, "SELECT * FROM post ");
   }
   $total = mysqli_num_rows($result);
   $pages = ceil($total/$halaman);
@@ -18,7 +18,7 @@ include "../koneksi.php";
   $query = "";
   if(isset($_GET["search"])){
     $search = $_GET["search"];
-    $query = mysqli_query($koneksi, "SELECT a.id_post, a.judul, a.isi, a.img, a.linking, b.nama AS namaKategori FROM post a LEFT JOIN kategori b ON a.id_kategori = b.id_kategori WHERE judul LIKE '%$search%' ORDER BY id_post DESC");
+    $query = mysqli_query($koneksi, "SELECT a.id_post, a.judul, a.isi, a.img, a.linking, b.nama AS namaKategori FROM post a LEFT JOIN kategori b ON a.id_kategori = b.id_kategori WHERE judul LIKE '%$search%' ORDER BY id_post DESC LIMIT $mulai, $halaman");
     // $query = mysqli_query($koneksi, "SELECT * FROM post WHERE judul LIKE '%$search%' ORDER BY id_post DESC LIMIT $mulai, $halaman");
   } else{
     $query = mysqli_query($koneksi, "SELECT a.id_post, a.judul, a.isi, a.img, a.linking, b.nama AS namaKategori FROM post a LEFT JOIN kategori b ON a.id_kategori = b.id_kategori ORDER BY id_post DESC LIMIT $mulai, $halaman");
