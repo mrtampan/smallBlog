@@ -74,27 +74,30 @@ function datanya() {
         .catch((error) => {
           console.error('Error:', error);
         });
-        // Hapus Searching
-        localStorage.removeItem('searching');
-        // End Searching
 
         this.getKategori();
     },
     previousPage(){
+      this.loadShow = true;
       this.initku(this.pagin.prevPage);
       console.log("cukk");
     },
     nextPage(){
+      this.loadShow = true;
       this.initku(this.pagin.nextPage);
+    },
+    changePage(param) {
+      this.loadShow = true;
+      this.initku(param);
     },
     pagehtml(){
       let ready = '';
       ready += '<li><button class="block hover:text-white hover:bg-blue-500 text-blue border border-grey-light px-3 py-2" x-on:click="previousPage()">Previous</button></li>';
       for (let i = 0; i < this.totalPage; i++){
         if(i + 1 == this.page){
-          ready += '<li><button class="block bg-blue-500 text-white hover:text-white hover:bg-blue-500 text-blue border border-grey-light px-3 py-2" x-on:click="initku(' + (i+1) + ')">' + (i+1) + '</button></li>';
+          ready += '<li><button class="block bg-blue-500 text-white hover:text-white hover:bg-blue-500 text-blue border border-grey-light px-3 py-2" x-on:click="changePage(' + (i+1) + ')">' + (i+1) + '</button></li>';
         }else {
-          ready += '<li><button class="block hover:text-white hover:bg-blue-500 text-blue border border-grey-light px-3 py-2" x-on:click="initku(' + (i+1) + ')">' + (i+1) + '</button></li>';
+          ready += '<li><button class="block hover:text-white hover:bg-blue-500 text-blue border border-grey-light px-3 py-2" x-on:click="changePage(' + (i+1) + ')">' + (i+1) + '</button></li>';
         }
         
       }

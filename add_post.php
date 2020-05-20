@@ -26,7 +26,9 @@ if($query && $_SESSION['status']=="login"){
         echo json_encode($result);
 
         $tailwind = "<link rel='stylesheet'
-        href='codesnip.css'><meta name='viewport' content='width=device-width, initial-scale=1.0'><link href='https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css' rel='stylesheet'>";
+        href='codesnip.css'>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'><link href='https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css' rel='stylesheet'>
+        <script> document.title ='". $judul ."';</script>";
         $head = file_get_contents("head.php");
         $myfile = fopen($linking . ".html", "w") or die("Unable to open file!");
         $txt = $tailwind;
