@@ -3,7 +3,7 @@
 <?php
 if($_GET['edit']){
 ?>
-<div class="w-full max-w-lg mx-auto mt-8" x-data="datanya()" x-init="initku()">
+<div class="container mx-auto mt-8" x-data="datanya()" x-init="initku()">
 <div class="flex flex-wrap -mx-3 mb-6">
     <div class="w-full px-3">
       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">

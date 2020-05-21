@@ -31,7 +31,7 @@
         <div class="w-full border-r border-b border-l border-gray-400 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
           <div class="mb-8">
             <div class="text-gray-900 font-bold text-xl mb-2" x-text="listData[index].judul"></div>
-            <p class="text-gray-700 text-base" x-html="listData[index].isi.substr(0,50)"></p>
+            <p class="text-gray-700 text-base" x-html="listData[index].isi.substr(0,100)"></p>
           </div>
         </div>
       </div>
