@@ -15,7 +15,7 @@
     </button>
     <ul class="dropdown-menu hidden text-white pt-1">
       <template x-if="listKategori" x-for="(list, index) in listKategori" :key="index">
-        <li class=""><a x-text="listKategori[index].nama" x-on:click="fetchDataKategori(listKategori[index].nama)" class="rounded-t hover:bg-pink-500 py-2 px-4 block whitespace-no-wrap" ></a></li>
+        <li class=""><a x-text="listKategori[index].nama" x-on:click="fetchKategori(listKategori[index].nama)" class="rounded-t hover:bg-pink-500 py-2 px-4 block whitespace-no-wrap" ></a></li>
       </template>
     </ul>
   </div>
@@ -27,7 +27,7 @@
     <div class="flex flex-wrap justify-center">
       <template x-if="listData" x-for="(list, index) in listData" :key="index">
       <div class="md:w-1/4 mb-4 lg:flex px-3" x-on:click="viewPost(listData[index].linking)">
-      <img class="w-screen border-b border-t border-l border-r border-gray-400 h-64 lg:h-auto lg:w-48 bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" x-bind:src="listData[index].img" alt="Sunset in the mountains">
+      <img class="object-cover w-screen border-b border-t border-l border-r border-gray-400 h-64 lg:h-auto lg:w-48 bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" x-bind:src="listData[index].img">
         <div class="w-full border-r border-b border-l border-gray-400 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
           <div class="mb-8">
             <div class="text-gray-900 font-bold text-xl mb-2" x-text="listData[index].judul"></div>
@@ -76,6 +76,7 @@ function datanya() {
         });
 
         this.getKategori();
+        this.generateSitemap();
     },
     previousPage(){
       this.loadShow = true;
@@ -124,6 +125,22 @@ function datanya() {
         
         this.listKategori= result.data;
         console.log(result.data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+    },
+    fetchKategori(param1) {
+      this.loadShow = true;
+      this.initku(1, param1);
+    },
+    generateSitemap(){
+      fetch(baseUrl + '/generator_sitemap.php', {
+        method: 'GET'
+      })
+      .then((response) => response.json())
+      .then((result) => {
+        console.log(result.message);
       })
       .catch((error) => {
         console.error('Error:', error);

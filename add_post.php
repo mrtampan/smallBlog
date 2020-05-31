@@ -8,10 +8,11 @@ $gambar = $_POST['gambar'];
 $idKategori = $_POST['id_kategori'];
 $linking = $_POST['linking'];
 $isidb = mysqli_real_escape_string($koneksi, $_POST['isi']);
+$datePost = date("Y-m-d H:i:s");
 
 session_start();
 $user = $_SESSION['username'];
-$posting = mysqli_query($koneksi, "INSERT INTO post (judul, isi, img, linking, id_kategori) VALUES ('$judul', '$isidb', '$gambar', '$linking', '$idKategori')");
+$posting = mysqli_query($koneksi, "INSERT INTO post (judul, isi, img, linking, id_kategori, create_date) VALUES ('$judul', '$isidb', '$gambar', '$linking', '$idKategori', '$datePost')");
 $query = mysqli_query($koneksi, "SELECT * FROM admin a where a.username = '$user' ");
 
 if($query && $_SESSION['status']=="login"){
