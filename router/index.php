@@ -5,12 +5,12 @@ include_once 'Router.php';
 $router = new Router(new Request);
 
 $router->get('/', function() {
-  $home = include './body.php';
+  $home = include $_SERVER['DOCUMENT_ROOT'].'/body.php';
   return $home;
 });
 
 $router->get('/login', function() {
-    $login = include './login.php';
+    $login = include $_SERVER['DOCUMENT_ROOT'].'/login.php';
     return $login;
   });
 
