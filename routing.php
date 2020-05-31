@@ -1,4 +1,7 @@
 <?php
+
+//routing lama
+
 $request = $_SERVER['REQUEST_URI'];
 $subfolder = '/smallBlog';
 

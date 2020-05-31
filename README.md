@@ -8,13 +8,9 @@ Project blog small resource
 composer install
 ```
 
-## Deployment to Server Public_html and www
+## Running Local Server in terminal/cmd
 
-```c
-Delete "/smallBlog" in the global.js file
-
-Change "/smallBlog" to "/" in the .htaccess file
-
-Delete "$subfolder" in the routing.php file 
+```bash
+php -S 127.0.0.1:8000
 
 ```

@@ -1,1 +1,1 @@
-const baseUrl = window.location.origin + '/smallBlog';
+const baseUrl = window.location.origin;

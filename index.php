@@ -12,7 +12,7 @@ Small Blog
 include "head.php";
 ?>
 <?php
-include "routing.php";
+include "router/index.php";
 ?>
 </body>
 </html>
