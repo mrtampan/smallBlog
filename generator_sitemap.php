@@ -30,7 +30,7 @@ while ($data = mysqli_fetch_assoc($query)) {
 //   );
 
 $txt = "<url>
-<loc>${host}/" . $data['linking'] . "</loc>
+<loc>${host}/" . $data['linking'] . ".html</loc>
 <lastmod>" . (new DateTime($data['create_date']))->format('c') . "</lastmod>
 <priority>1.0</priority>
 </url>";
