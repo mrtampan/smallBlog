@@ -20,15 +20,6 @@ $txt = "<url>
 fwrite($sitemap, $txt);
 while ($data = mysqli_fetch_assoc($query)) {
 
-    //   $jsonData['data'][] = array(
-//       "id_post" => $data['id_post'],
-//       "judul" => $data['judul'],
-//       "isi" => $data['isi'],
-//       "img" => $data['img'],
-//       "linking" => $data['linking'],
-//       "kategori" => $data['namaKategori']
-//   );
-
 $txt = "<url>
 <loc>${host}/" . $data['linking'] . ".html</loc>
 <lastmod>" . (new DateTime($data['create_date']))->format('c') . "</lastmod>
