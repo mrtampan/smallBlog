@@ -1,8 +1,3 @@
-<style>
-.dropdown:hover .dropdown-menu {
-  display: block;
-}
-</style>
 <div x-data="datanya()" x-init="initku(1)">
 <?php include "loading.php"; ?>
 
