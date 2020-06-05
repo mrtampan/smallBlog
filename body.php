@@ -56,7 +56,6 @@ function datanya() {
           console.error('Error:', error);
         });
 
-        this.generateSitemap();
     },
     previousPage(){
       this.loadShow = true;
@@ -91,18 +90,6 @@ function datanya() {
       att.value = param + '.html';
       ahref.setAttributeNode(att);
       ahref.click();
-    },
-    generateSitemap(){
-      fetch(baseUrl + '/generator_sitemap.php', {
-        method: 'GET'
-      })
-      .then((response) => response.json())
-      .then((result) => {
-        console.log(result.message);
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
     },
     fetchDataKategori(param1) {
       this.loadShow = true;

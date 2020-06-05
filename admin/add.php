@@ -88,6 +88,16 @@ function datanya() {
                     .then((result) => {
                         console.log('Success:', result);
                         alert(result.message);
+                        fetch(baseUrl + '/generator_sitemap.php', {
+                          method: 'GET'
+                        })
+                        .then((response) => response.json())
+                        .then((result) => {
+                          console.log(result.message);
+                        })
+                        .catch((error) => {
+                          console.error('Error:', error);
+                        });
                         window.location.href = baseUrl + '/admin?pages=';
                     })
                     .catch((error) => {

@@ -3,7 +3,7 @@ include "koneksi.php";
 // $koneksi = mysqli_connect("localhost", "root", "", "small_blog");
 
 
-session_start();
+// session_start();
 $query = mysqli_query($koneksi, "SELECT * FROM post ");
 $host = $_SERVER['SERVER_NAME'];
 
