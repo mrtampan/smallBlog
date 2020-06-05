@@ -26,7 +26,10 @@ if($query && $_SESSION['status']=="login"){
         header('Content-Type: application/json');
         echo json_encode($result);
 
-        $tailwind = "<link rel='stylesheet'
+        $tailwind = "
+        <script src='global.js'></script>
+        <script src='https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine-ie11.min.js' defer></script>
+        <link rel='stylesheet'
         href='codesnip.css'>
         <meta name='viewport' content='width=device-width, initial-scale=1.0'><link href='https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css' rel='stylesheet'>
         <script> document.title ='". $judul ."';</script>";
