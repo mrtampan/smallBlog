@@ -14,3 +14,6 @@ composer install
 php -S 127.0.0.1:8000
 
 ```
+
+## Import Database Mysql
+Import small_blog.sql to your database, then change configuration koneksi.php
