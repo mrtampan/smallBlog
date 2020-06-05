@@ -5,23 +5,6 @@
 </style>
 <div x-data="datanya()" x-init="initku(1)">
 <?php include "loading.php"; ?>
-<div id="mySidenav" class="sidenav bg-teal-500">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="" >Home</a>
-  <div class="dropdown inline-block relative">
-    <button class="text-white rounded inline-flex items-center">
-      <span class="mr-1">Kategori</span>
-      <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/> </svg>
-    </button>
-    <ul class="dropdown-menu hidden text-white pt-1">
-      <template x-if="listKategori" x-for="(list, index) in listKategori" :key="index">
-        <li class=""><a x-text="listKategori[index].nama" x-on:click="fetchKategori(listKategori[index].nama)" class="rounded-t hover:bg-pink-500 py-2 px-4 block whitespace-no-wrap" ></a></li>
-      </template>
-    </ul>
-  </div>
-  <div ><input x-model="searchprm" x-on:keyup="cari()" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"  type="text" placeholder="Cari">
-  </div>
-</div>
 
   <div class="mx-auto p-4" >
     <div class="flex flex-wrap justify-center">
@@ -49,15 +32,13 @@ function datanya() {
     pagin: null,
     page: null,
     totalPage: null,
-    searchprm: null,
-    listKategori: null,
-    initku (param1, param2) {
+    initku (param1) {
         let paramsrc = "";
-        if(param2 === null || param2 === undefined){
+        paramsrc = "<?php echo $searchString; ?>";
+        if(paramsrc === null || paramsrc === undefined ){
           paramsrc = "";
-        }else {
-          paramsrc = param2;
         }
+
         fetch(baseUrl + '/admin/get_data.php?pages=' + param1 + '&search=' + paramsrc, {
           method: 'GET'
         })
@@ -75,7 +56,6 @@ function datanya() {
           console.error('Error:', error);
         });
 
-        this.getKategori();
         this.generateSitemap();
     },
     previousPage(){
@@ -111,28 +91,6 @@ function datanya() {
       att.value = param + '.html';
       ahref.setAttributeNode(att);
       ahref.click();
-    },
-    cari() {
-      this.loadShow = true;
-      this.initku(1, this.searchprm)
-    },
-    getKategori() {
-      fetch(baseUrl + '/admin/get_kategori.php', {
-        method: 'GET'
-      })
-      .then((response) => response.json())
-      .then((result) => {
-        
-        this.listKategori= result.data;
-        console.log(result.data);
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
-    },
-    fetchKategori(param1) {
-      this.loadShow = true;
-      this.initku(1, param1);
     },
     generateSitemap(){
       fetch(baseUrl + '/generator_sitemap.php', {

@@ -4,7 +4,8 @@ include_once 'Request.php';
 include_once 'Router.php';
 $router = new Router(new Request);
 
-$router->get('/', function() {
+$router->get('/', function($request) {
+  $searchString = !empty($request->getParam()) ? $request->getParam()["search"] : "";
   $home = include $_SERVER['DOCUMENT_ROOT'].'/body.php';
   return $home;
 });
