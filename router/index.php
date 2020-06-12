@@ -6,13 +6,13 @@ $router = new Router(new Request);
 
 $router->get('/', function($request) {
   $searchString = !empty($request->getParam()["search"]) ? $request->getParam()["search"] : "";
-  $home = include $_SERVER['DOCUMENT_ROOT'].'/body.php';
-  return $home;
+  $pageString = !empty($request->getParam()["page"]) ? $request->getParam()["page"] : "";
+  include $_SERVER['DOCUMENT_ROOT'].'/body.php';
+  
 });
 
 $router->get('/login', function() {
-    $login = include $_SERVER['DOCUMENT_ROOT'].'/login.php';
-    return $login;
+    include $_SERVER['DOCUMENT_ROOT'].'/login.php';
   });
 
 

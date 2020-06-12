@@ -1,4 +1,4 @@
-<div x-data="datanya()" x-init="initku(1)">
+<div x-data="datanya()" x-init="initku()">
 <?php include "loading.php"; ?>
 
   <div class="mx-auto p-4" >
@@ -27,11 +27,18 @@ function datanya() {
     pagin: null,
     page: null,
     totalPage: null,
-    initku (param1) {
+    initku (param1 = 1) {
         let paramsrc = "";
+        let parampage = "";
         paramsrc = "<?php echo $searchString; ?>";
-        if(paramsrc === null || paramsrc === undefined ){
+        parampage = "<?php echo $pageString; ?>";
+        if(paramsrc === null || paramsrc === undefined || parampage === ""){
           paramsrc = "";
+        }
+
+        param1 = parampage;
+        if(parampage === null || parampage === undefined || parampage === ""){
+          param1 = 1
         }
 
         fetch(baseUrl + '/admin/get_data.php?pages=' + param1 + '&search=' + paramsrc, {
@@ -54,16 +61,42 @@ function datanya() {
     },
     previousPage(){
       this.loadShow = true;
-      this.initku(this.pagin.prevPage);
-      console.log("cukk");
+      let paramsrc = "<?php echo $searchString; ?>";
+      let ahref = document.createElement('a');
+      let att = document.createAttribute('href');
+      if(paramsrc === null || paramsrc === undefined || paramsrc === ""){
+        att.value = baseUrl + "/?page=" + this.pagin.prevPage;
+      }else {
+        att.value = baseUrl + "/?page=" + this.pagin.prevPage + "&search=" + paramsrc;
+      }
+      ahref.setAttributeNode(att);
+      ahref.click();
     },
     nextPage(){
       this.loadShow = true;
-      this.initku(this.pagin.nextPage);
+      let paramsrc = "<?php echo $searchString; ?>";
+      let ahref = document.createElement('a');
+      let att = document.createAttribute('href');
+      if(paramsrc === null || paramsrc === undefined || paramsrc === ""){
+        att.value = baseUrl + "/?page=" + this.pagin.nextPage;
+      }else {
+        att.value = baseUrl + "/?page=" + this.pagin.nextPage + "&search=" + paramsrc;
+      }
+      ahref.setAttributeNode(att);
+      ahref.click();
     },
     changePage(param) {
       this.loadShow = true;
-      this.initku(param);
+      let paramsrc = "<?php echo $searchString; ?>";
+      let ahref = document.createElement('a');
+      let att = document.createAttribute('href');
+      if(paramsrc === null || paramsrc === undefined || paramsrc === ""){
+        att.value = baseUrl + "/?page=" + param;
+      }else {
+        att.value = baseUrl + "/?page=" + param + "&search=" + paramsrc;
+      }
+      ahref.setAttributeNode(att);
+      ahref.click();
     },
     pagehtml(){
       let ready = '';
