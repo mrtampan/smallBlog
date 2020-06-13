@@ -32,7 +32,7 @@ function datanya() {
         let parampage = "";
         paramsrc = "<?php echo $searchString; ?>";
         parampage = "<?php echo $pageString; ?>";
-        if(paramsrc === null || paramsrc === undefined || paramsrc === ""){
+        if(paramsrc === null || paramsrc === undefined){
           paramsrc = "";
         }
 
