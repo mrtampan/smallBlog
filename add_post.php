@@ -45,7 +45,7 @@ if($query && $_SESSION['status']=="login"){
         fwrite($myfile, $txt);
         $txt = "<div class='flex justify-center mb-3'><img class='object-contain h-48 w-full' src='" . $gambar . "' alt='" . $judul . "' /></div><div class='clear-both'></div>";
         fwrite($myfile, $txt);
-        $txt = "<div class='md:text-2xl'>" . $isi . "</div>" . "</div></div></body>";
+        $txt = "<div class='md:text-lg'>" . $isi . "</div>" . "</div></div></body>";
         fwrite($myfile, $txt);
         fclose($myfile);
     }
