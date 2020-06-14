@@ -43,11 +43,11 @@ if($query && $_SESSION['status']=="login"){
         fwrite($myfile, $txt);
         $txt = $head;
         fwrite($myfile, $txt);
-        $txt = "<div class='container mx-auto bg-gray-100 rounded p-4 h-auto'><h1 class='my-3 text-3xl font-bold'>" . $judul . "</h1><div class='clear-both'></div>";
+        $txt = "<div class='grid grid-cols-4 md:mx-20 rounded h-auto justify-center'><div class='md:col-start-2 md:col-span-2 col-start-1 col-span-4 bg-gray-100 p-4'><h1 class='my-3 text-3xl font-bold'>" . $judul . "</h1><div class='clear-both'></div>";
         fwrite($myfile, $txt);
         $txt = "<div class='flex justify-center mb-3'><img class='object-contain h-48 w-full' src='" . $gambar . "' alt='" . $judul . "' /></div><div class='clear-both'></div>";
         fwrite($myfile, $txt);
-        $txt = $isi . "</div></body>";
+        $txt = "<div class='md:text-2xl'>" . $isi . "</div>" . "</div></div></body>";
         fwrite($myfile, $txt);
         fclose($myfile);
     }
