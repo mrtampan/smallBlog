@@ -56,6 +56,9 @@ class Router
   {
     $methodDictionary = $this->{strtolower($this->request->requestMethod)};
     $formatedRoute = $this->formatRoute($this->request->requestUri);
+    if (strpos($formatedRoute, 'pos') !== false) {
+      $formatedRoute = "/" . explode("/", $formatedRoute)[1];
+    }
     if (strpos($formatedRoute, '?') !== false) {
         $formatedRoute = explode("?", $formatedRoute)[0];
     }

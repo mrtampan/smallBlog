@@ -1,3 +1,9 @@
+<!-- Small Blog
+Author: Achmad Rivaldi
+Open Source Blog Application, tolong Jangan dijual belikan
+1. Buat belajar 
+2. Buat Bikin Blog pribadi -->
+
 <html>
 <head>
 <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">

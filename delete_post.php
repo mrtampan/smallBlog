@@ -21,7 +21,6 @@ if($query && $_SESSION['status']=="login"){
         header('Content-Type: application/json');
         echo json_encode($result);
 
-        unlink($linking . ".html");
     }
     
 } else {

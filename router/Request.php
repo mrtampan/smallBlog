@@ -75,6 +75,10 @@ class Request implements IRequest
         return $body;
     }
   }
+  public function getPrefix(){
+    $prefix = explode("/", $this->requestUri)[2];
+    return $prefix;
+  }
 }
 
 ?>

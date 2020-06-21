@@ -26,28 +26,6 @@ if($query && $_SESSION['status']=="login"){
         header('Content-Type: application/json');
         echo json_encode($result);
 
-        $tailwind = "
-        <script src='global.js'></script>
-        <script src='https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine-ie11.min.js' defer></script>
-        <link rel='stylesheet'
-        href='codesnip.css'>
-        <meta name='viewport' content='width=device-width, initial-scale=1.0'><link href='https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css' rel='stylesheet'>
-        <script> document.title ='". $judul ."';</script>";
-        $head = file_get_contents("head.php");
-        $myfile = fopen($linking . ".html", "w") or die("Unable to open file!");
-        $txt = $tailwind;
-        fwrite($myfile, $txt);
-        $txt = "<body class='bg-gray-300'>";
-        fwrite($myfile, $txt);
-        $txt = $head;
-        fwrite($myfile, $txt);
-        $txt = "<div class='grid grid-cols-4 md:mx-20 rounded h-auto justify-center'><div class='md:col-start-2 md:col-span-2 col-start-1 col-span-4 bg-gray-100 p-4'><h1 class='my-3 text-3xl font-bold'>" . $judul . "</h1><div class='clear-both'></div>";
-        fwrite($myfile, $txt);
-        $txt = "<div class='flex justify-center mb-3'><img class='object-contain h-48 w-full' src='" . $gambar . "' alt='" . $judul . "' /></div><div class='clear-both'></div>";
-        fwrite($myfile, $txt);
-        $txt = "<div class='md:text-lg'>" . $isi . "</div>" . "</div></div></body>";
-        fwrite($myfile, $txt);
-        fclose($myfile);
     }
     
 } else {

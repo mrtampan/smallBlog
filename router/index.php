@@ -27,3 +27,11 @@ $router->post('/data', function($request) {
 
   return json_encode($request->getBody());
 });
+
+$router->get('/pos', function($request) {
+  if(empty($request->getPrefix())){
+    return "404 Not Found";
+  }
+  $linking = $request->getPrefix();
+  include $_SERVER['DOCUMENT_ROOT'].'/detail_post.php';
+});
