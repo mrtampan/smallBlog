@@ -1,5 +1,6 @@
 <!-- <script> document.title ='". $judul ."';</script> -->
 <script src="../global.js"></script>
+<link rel="stylesheet"	href="/codesnip.css">
 <div class="bg-gray-300" x-data="datanya()" x-init="initku()">
     <div class="grid grid-cols-4 md:mx-20 rounded h-auto justify-center">
         <div class="md:col-start-2 md:col-span-2 col-start-1 col-span-4 bg-gray-100 p-4">
