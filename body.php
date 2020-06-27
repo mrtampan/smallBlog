@@ -4,7 +4,7 @@
   <div class="mx-auto p-4" >
     <div class="flex flex-wrap justify-center">
       <template x-if="listData" x-for="(list, index) in listData" :key="index">
-      <a class="md:w-1/3 mb-4 lg:flex px-3" x-bind:href="'pos/' + listData[index].linking">
+      <a class="md:w-1/3 md:h-56 mb-4 lg:flex px-3" x-bind:href="'pos/' + listData[index].linking">
       <img class="w-screen border-b border-t border-l border-r border-gray-400 h-64 lg:h-auto lg:w-56 bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" x-bind:src="listData[index].img">
         <div class="w-full border-r border-b border-l border-gray-400 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
           <div class="mb-8">
