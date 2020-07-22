@@ -2,7 +2,7 @@ pre {
     font-family: monospace;
     background-color: #fff;
     width: em(440);
-    margin: 4em auto;
+    margin: 2em auto;
     padding: 0.5em;
     border-radius: 0.25em;
     box-shadow: 0.1em 0.1em 0.5em rgba(0, 0, 0, .45);

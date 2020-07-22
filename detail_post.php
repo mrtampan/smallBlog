@@ -7,7 +7,7 @@
             <h1 class="my-3 text-3xl font-bold" x-html="oneData.judul"></h1>
             <div class="clear-both"></div>
             <div class="flex justify-center mb-3"><img class="object-contain h-48 w-full" x-bind:src="oneData.img" x-bind:alt="oneData.judul" /></div><div class="clear-both"></div>
-            <div class="md:text-lg" x-html="oneData.isi"></div>
+            <div class="md:text-lg leading-relaxed" x-html="oneData.isi"></div>
         </div>
     </div>
 </div>
