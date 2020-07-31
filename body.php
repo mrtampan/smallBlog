@@ -1,13 +1,13 @@
 <div x-data="datanya()" x-init="initku()">
-<?php include "loading.php"; ?>
+<?php include "loading_modern.php"; ?>
 
   <div class="mx-auto p-4" >
     <div class="flex flex-wrap justify-center">
       <template x-if="listData" x-for="(list, index) in listData" :key="index">
-      <a class="md:w-1/3 md:h-56 mb-4 lg:flex px-3" x-bind:href="'pos/' + listData[index].linking">
-      <img class="w-screen border-b border-t border-l border-r border-gray-400 h-64 lg:h-auto lg:w-56 bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" x-bind:src="listData[index].img">
-        <div class="w-full border-r border-b border-l border-gray-400 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-          <div class="mb-8">
+      <a class="mb-5 mx-5 max-w-sm rounded overflow-hidden border" x-bind:href="'pos/' + listData[index].linking">
+      <img class="w-full h-64 bg-cover text-center overflow-hidden" x-bind:src="listData[index].img">
+        <div class="w-full bg-white p-4 flex flex-col justify-between leading-normal">
+          <div class="h-48">
             <div class="text-gray-900 font-bold text-xl mb-2" x-text="listData[index].judul"></div>
             <p class="text-gray-700 text-base" x-html="listData[index].isi.substr(0,100)"></p>
           </div>
@@ -17,6 +17,7 @@
     </div>
     <ul class="flex list-reset rounded items-center justify-center font-sans mt-5" x-html="pagehtml()"></ul>
   </div>
+  <?php include "foot.php"; ?>
 </div>
 <script src="global.js"></script>
 <script>
