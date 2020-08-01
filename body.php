@@ -57,6 +57,7 @@ function datanya() {
         })
         .catch((error) => {
           console.error('Error:', error);
+          swal("Server tidak meresponse, Tolong refresh browser");
         });
 
     },
