@@ -9,7 +9,7 @@
         <div class="w-full bg-white p-4 flex flex-col justify-between leading-normal">
           <div class="h-48">
             <div class="text-gray-900 font-bold text-xl mb-2" x-text="listData[index].judul"></div>
-            <p class="text-gray-700 text-base" x-html="listData[index].isi.substr(0,100)"></p>
+            <p class="text-gray-700 text-base" x-html="listData[index].isi.substr(0,200)"></p>
           </div>
         </div>
       </a>
