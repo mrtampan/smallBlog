@@ -1,15 +1,15 @@
 <div x-data="datanya()" x-init="initku()">
 <?php include "loading_modern.php"; ?>
 
-  <div class="mx-auto p-4" >
+  <div class="mx-auto container mt-5" >
     <div class="flex flex-wrap justify-center">
       <template x-if="listData" x-for="(list, index) in listData" :key="index">
       <a class="mb-5 mx-5 max-w-sm rounded overflow-hidden border" x-bind:href="'pos/' + listData[index].linking">
       <img class="w-full h-64 bg-cover text-center overflow-hidden" x-bind:src="listData[index].img">
         <div class="w-full bg-white p-4 flex flex-col justify-between leading-normal">
-          <div class="h-48">
-            <div class="text-gray-900 font-bold text-xl mb-2" x-text="listData[index].judul"></div>
-            <p class="text-gray-700 text-base" x-html="listData[index].isi.substr(0,200)"></p>
+          <div class="h-full">
+            <div class="text-gray-900 font-bold text-lg mb-2" x-text="listData[index].judul"></div>
+            <!-- <p class="text-gray-700 text-base" x-html="listData[index].isi.substr(0,100)"></p> -->
           </div>
         </div>
       </a>
