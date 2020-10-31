@@ -26,7 +26,7 @@ if($_GET['edit']){
       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
         Gambar Posting
       </label>
-      <input x-ref="gambar" x-on:change="fileName = $refs.gambar.files[0].name" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="file">
+      <input x-model="gambar" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text">
     </div>
   </div>
   <div class="flex flex-wrap -mx-3 mb-6">
@@ -44,7 +44,7 @@ if($_GET['edit']){
       </div>
     </div>
   </div>
-  <input style="display:none; " x-model="gambarlama"  />
+  <!-- <input style="display:none; " x-model="gambarlama"  /> -->
   <input style="display:none; " x-model="linking"  />
   <input style="display:none; " x-model="id_post"  />
   <div class="flex flex-wrap -mx-3 mb-6">
@@ -69,12 +69,35 @@ function datanya() {
         judul: '',
         isi: '',
         linking: '',
+        gambar: '',
         gambarlama: '',
         id_post:'',
         selectKategori: '',
         listKategori: '',
         submitForm() {
-
+          const formData = new FormData();
+            formData.append('judul', this.judul);
+            formData.append('isi', CKEDITOR.instances.editor1.getData());
+            formData.append('gambar', this.gambar);
+            formData.append('linking', this.linking);
+            formData.append('idPost', this.id_post);
+            formData.append('id_kategori', this.selectKategori);
+            formData.append('token', localStorage.getItem("token"));
+            fetch(baseUrl + '/edit_post.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then((response) => response.json())
+            .then((result) => {
+                console.log('Success:', result);
+                alert(result.message);
+                window.location.href = baseUrl + '/admin?pages=';
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        },
+        oldSubmitForm() {
             const formData = new FormData();
             console.log(this.$refs.gambar.value);
             if(this.$refs.gambar.value != ""){
@@ -164,7 +187,8 @@ function datanya() {
                 this.judul= JSON.parse(result).judul;
                 CKEDITOR.instances.editor1.setData(JSON.parse(result).isi);
                 this.linking= JSON.parse(result).linking;
-                this.gambarlama = JSON.parse(result).img;
+                this.gambar = JSON.parse(result).img;
+                // this.gambarlama = JSON.parse(result).img;
                 this.id_post= JSON.parse(result).id_post;
                 this.selectKategori = JSON.parse(result).id_kategori;
               })

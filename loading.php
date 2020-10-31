@@ -6,7 +6,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, .5);
+  background-color: rgba(0, 0, 0, 1);
   display: table;
   transition: opacity .3s ease;
 }
@@ -51,7 +51,8 @@
 <div class="modal-mask" x-show="loadShow" transition="modal">
     <div class="modal-wrapper">
       <div class="modal-container">
-        <img src="assets/banana.gif" alt="banana dance" width="200px" height="250px"/>
+        <img src="/assets/banana.gif" alt="banana dance" width="200px" height="250px"/>
+        <div style="color:white;">Tunggu Sebentar....</div>
       </div>
     </div>
   </div>

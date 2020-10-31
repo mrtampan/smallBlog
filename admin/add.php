@@ -21,7 +21,7 @@
       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
         Gambar Posting
       </label>
-      <input x-ref="gambar" x-on:change="fileName = $refs.gambar.files[0].name" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="file">
+      <input x-model="gambar" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text">
     </div>
   </div>
   <div class="flex flex-wrap -mx-3 mb-6">
@@ -57,9 +57,42 @@
 function datanya() {
     return {
         judul: '',
+        gambar: '',
         listKategori: '',
         selectKategori: '',
-        submitForm() {
+        submitForm(){
+          const formData = new FormData();
+          formData.append('judul', this.judul);
+          formData.append('isi', CKEDITOR.instances.editor1.getData());
+          formData.append('gambar', this.gambar);
+          formData.append('linking', this.judul.split(' ').join('-'));
+          formData.append('id_kategori', this.selectKategori);
+          formData.append('token', localStorage.getItem("token"));
+          fetch(baseUrl + '/add_post.php', {
+              method: 'POST',
+              body: formData
+          })
+          .then((response) => response.json())
+          .then((result) => {
+              console.log('Success:', result);
+              alert(result.message);
+              fetch(baseUrl + '/generator_sitemap.php', {
+                method: 'GET'
+              })
+              .then((response) => response.json())
+              .then((result) => {
+                console.log(result.message);
+              })
+              .catch((error) => {
+                console.error('Error:', error);
+              });
+              window.location.href = baseUrl + '/admin?pages=';
+          })
+          .catch((error) => {
+              console.error('Error:', error);
+          });
+        },
+        oldSubmitForm() {
             const formData = new FormData();
             var imgBase64;
             console.log(this.$refs.gambar.files[0]);

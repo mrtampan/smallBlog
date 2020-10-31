@@ -1,0 +1,34 @@
+.loadingGray {
+    -webkit-animation: grayy 1s;
+    animation: grayy 1s;
+  }
+
+  @-webkit-keyframes grayy {
+
+    0% {
+      filter: grayscale(100%);
+    }
+
+    50% {
+      filter: grayscale(50%);
+    }
+
+    100% {
+      filter: grayscale(0px);
+    }
+  }
+
+  @keyframes grayy {
+
+    0% {
+      filter: grayscale(100%);
+    }
+
+    50% {
+      filter: grayscale(50%);
+    }
+
+    100% {
+      filter: grayscale(0px);
+    }
+  }

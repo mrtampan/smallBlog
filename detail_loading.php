@@ -4,7 +4,7 @@
 </head>
 <body>
 <div x-show="loadShow">
-    <div class="grid grid-cols-4 md:mx-20 rounded h-full justify-center">
+    <div class="grid grid-cols-4 rounded h-full justify-center">
         <div class="md:col-start-2 md:col-span-2 col-start-1 col-span-4 bg-gray-100 p-4">
             <h1 class="my-3" id="jdul"></h1>
             <div class="clear-both"></div>

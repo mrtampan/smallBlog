@@ -1,25 +1,27 @@
 <div x-data="datanya()" x-init="initku()">
-<?php include "loading_modern.php"; ?>
+<?php include "loading.php"; ?>
 
   <div class="mx-auto container mt-5" >
-    <div class="flex flex-wrap justify-center">
-      <template x-if="listData" x-for="(list, index) in listData" :key="index">
+  <template x-if="enableData">
+    <div class="flex flex-wrap justify-center" x-html="element">
+      <!-- <template x-if="listData" x-for="(list, index) in listData" :key="index">
       <a class="mb-5 mx-5 max-w-sm rounded overflow-hidden border" x-bind:href="'pos/' + listData[index].linking">
-      <img class="w-full h-64 bg-cover text-center overflow-hidden" x-bind:src="listData[index].img">
+      <img class="w-full h-64 bg-cover text-center overflow-hidden lozad" x-bind:src="listData[index].img">
         <div class="w-full bg-white p-4 flex flex-col justify-between leading-normal">
           <div class="h-full">
             <div class="text-gray-900 font-bold text-lg mb-2" x-text="listData[index].judul"></div>
-            <!-- <p class="text-gray-700 text-base" x-html="listData[index].isi.substr(0,100)"></p> -->
           </div>
         </div>
       </a>
-      </template>
+      </template> -->
     </div>
-    <ul class="flex list-reset rounded items-center justify-center font-sans mt-5" x-html="pagehtml()"></ul>
+    </template>
+    <ul class="flex list-reset rounded items-center justify-center font-sans mt-5 mb-3" x-html="pagehtml()"></ul>
   </div>
   <?php include "foot.php"; ?>
 </div>
 <script src="global.js"></script>
+
 <script>
 function datanya() {
   return {
@@ -28,6 +30,8 @@ function datanya() {
     pagin: null,
     page: null,
     totalPage: null,
+    enableData: false,
+    element: '',
     initku (param1 = 1) {
         let paramsrc = "";
         let parampage = "";
@@ -45,15 +49,17 @@ function datanya() {
         fetch(baseUrl + '/admin/get_data.php?pages=' + param1 + '&search=' + paramsrc, {
           method: 'GET'
         })
-        .then((response) => response.text())
+        .then((response) => response.json())
         .then((result) => {
           
-          this.loadShow = false;
-          this.listData = JSON.parse(result).data;
-          this.pagin = JSON.parse(result);
-          this.totalPage = JSON.parse(result).totalPage;
-          this.page = JSON.parse(result).page;
-          console.log(this.listData);
+          // this.loadShow = false;
+          this.listData = result.data;
+          this.pagin = result;
+          this.totalPage = result.totalPage;
+          this.page = result.page;
+          
+          this.renderedhtml();
+
         })
         .catch((error) => {
           console.error('Error:', error);
@@ -113,6 +119,60 @@ function datanya() {
       }
       ready += '<li><button class="block hover:text-white border border-grey-light hover:bg-blue-500 text-blue px-3 py-2" x-on:click="nextPage()">Next</button></li>';
       return ready;
+    },
+    async renderedhtml(){
+        
+        this.element = '';
+        let counting = 0;
+        for(let i = 0; i < this.listData.length; i++){
+          let createLink = document.createElement('a');
+          createLink.href = `pos/${this.listData[i].linking}`;
+          createLink.className = 'w-full mb-5 mx-5 max-w-sm rounded overflow-hidden border loadingGray';
+          
+          let createImg = document.createElement('img');
+          createImg.setAttribute('src', this.listData[i].img);
+          createImg.className =  'w-full h-64 bg-cover text-center overflow-hidden';
+          
+          let div1 = document.createElement('div');
+          div1.className = 'w-full bg-white p-4 flex flex-col justify-between leading-normal';
+          
+          let div2 = document.createElement('div');
+          div2.className = 'h-full';
+          
+          let div3 = document.createElement('div');
+          div3.className = 'text-gray-900 font-bold text-lg mb-2';
+          div3.innerText = this.listData[i].judul;
+          
+          div1.appendChild(div2);
+          div2.appendChild(div3);
+          
+          await this.combineElement(createLink, createImg, div1).then((result) => {
+            this.element += result.outerHTML;
+          });
+
+          counting++;
+
+        }
+        
+        if(this.listData.length === counting){
+          this.enableData = true;
+          this.loadShow = false;
+        }
+
+    },
+    combineElement(link, image, div){
+      return new Promise((resolve) => {
+          setTimeout(() => {
+            image.onload = resolve();
+
+          }, 1000);
+      }).then(() => {
+        link.appendChild(image);
+        link.appendChild(div);
+        return link;
+
+      });
+
     },
     viewPost(param){
       let ahref = document.createElement('a');
