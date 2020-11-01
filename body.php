@@ -59,6 +59,8 @@ function datanya() {
           this.page = result.page;
           
           this.renderedhtml();
+          this.enableData = true;
+          this.loadShow = false;
 
         })
         .catch((error) => {
@@ -155,10 +157,6 @@ function datanya() {
 
         }
         
-        if(this.listData.length === counting){
-          this.enableData = true;
-          this.loadShow = false;
-        }
 
     },
     viewPost(param){

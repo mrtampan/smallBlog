@@ -35,6 +35,8 @@ function datanya(){
             this.oneData = result;
             document.title = this.oneData.judul;
             this.renderedhtml();
+            this.loadShow = false; 
+            this.enableData = true;
             })
             .catch((error) => {
                 console.error('Error:', error);
@@ -70,8 +72,7 @@ function datanya(){
             div2.appendChild(div3);
             
             this.oneHtmlData = h1.outerHTML + div2.outerHTML + div4.outerHTML;
-            this.loadShow = false; 
-            this.enableData = true;
+
             
             
         }
