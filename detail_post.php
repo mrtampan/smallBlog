@@ -71,7 +71,7 @@ function datanya(){
             let loadImage = new Promise((resolve) => {
             setTimeout(() => {
                 imgMain.onload = resolve();
-            }, 500);
+            }, 100);
             });
             
             loadImage.then((result) => {

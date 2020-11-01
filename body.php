@@ -165,7 +165,7 @@ function datanya() {
           setTimeout(() => {
             image.onload = resolve();
 
-          }, 1000);
+          }, 100);
       }).then(() => {
         link.appendChild(image);
         link.appendChild(div);
