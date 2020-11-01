@@ -65,24 +65,14 @@ function datanya(){
             let div4 = document.createElement('div');
             div4.className = 'md:text-lg leading-relaxed';
             div4.innerHTML = this.oneData.isi;
-            
-            
 
-            let loadImage = new Promise((resolve) => {
-            setTimeout(() => {
-                imgMain.onload = resolve();
-            }, 100);
-            });
+            div2.appendChild(imgMain);
+            div2.appendChild(div3);
             
-            loadImage.then((result) => {
-                
-                div2.appendChild(imgMain);
-                div2.appendChild(div3);
-                
-                this.oneHtmlData = h1.outerHTML + div2.outerHTML + div4.outerHTML;
-                this.loadShow = false; 
-                this.enableData = true;
-            });
+            this.oneHtmlData = h1.outerHTML + div2.outerHTML + div4.outerHTML;
+            this.loadShow = false; 
+            this.enableData = true;
+            
             
         }
     }

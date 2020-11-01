@@ -120,7 +120,7 @@ function datanya() {
       ready += '<li><button class="block hover:text-white border border-grey-light hover:bg-blue-500 text-blue px-3 py-2" x-on:click="nextPage()">Next</button></li>';
       return ready;
     },
-    async renderedhtml(){
+    renderedhtml(){
         
         this.element = '';
         let counting = 0;
@@ -145,11 +145,12 @@ function datanya() {
           
           div1.appendChild(div2);
           div2.appendChild(div3);
-          
-          await this.combineElement(createLink, createImg, div1).then((result) => {
-            this.element += result.outerHTML;
-          });
 
+          createLink.appendChild(createImg);
+          createLink.appendChild(div1);
+
+          this.element += createLink.outerHTML;
+          
           counting++;
 
         }
@@ -158,20 +159,6 @@ function datanya() {
           this.enableData = true;
           this.loadShow = false;
         }
-
-    },
-    combineElement(link, image, div){
-      return new Promise((resolve) => {
-          setTimeout(() => {
-            image.onload = resolve();
-
-          }, 100);
-      }).then(() => {
-        link.appendChild(image);
-        link.appendChild(div);
-        return link;
-
-      });
 
     },
     viewPost(param){
