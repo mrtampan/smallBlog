@@ -20,3 +20,8 @@ Import small_blog.sql to your database, then change configuration koneksi.php
 
 ## htaccess file must exist
 .htaccess file must exist when deployment to website
+
+
+## Information Login Admin
+username: admin
+password: operation12
