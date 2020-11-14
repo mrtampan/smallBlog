@@ -13,7 +13,7 @@ switch ($request) {
         require __DIR__ . '/body.php';
         break;
     case $subfolder . '/login' :
-        require __DIR__ . '/login.php';
+        require __DIR__ . '/log_in.php';
         break;
     default:
         require __DIR__ . '/404.html';

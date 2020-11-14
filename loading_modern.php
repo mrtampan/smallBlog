@@ -33,15 +33,6 @@
           </div>
         </div>
       </div>
-      <div class="mx-5 mb-5 max-w-sm rounded overflow-hidden border" >
-      <div id="gmbr" class="text-center overflow-hidden"></div>
-        <div class="w-full bg-white p-4 flex flex-col justify-between leading-normal mb-5">
-          <div class="h-full">
-            <div id="jdul" class="text-gray-900 font-bold text-xl mb-2" ></div>
-            <!-- <p id="txt" class="text-gray-700 text-base" ></p> -->
-          </div>
-        </div>
-      </div>
 </div>
 </div>
 

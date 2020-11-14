@@ -31,7 +31,7 @@ if($stmt = $koneksi->prepare("SELECT password FROM admin a where a.username = ?"
         $stmt->bind_result($passFromDB);
         $stmt->fetch();
         
-        if($password === $passFromDB){
+        if(password_verify($password, $passFromDB)){
             
             // set your default time-zone
             date_default_timezone_set('Asia/Jakarta');

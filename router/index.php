@@ -12,9 +12,8 @@ $router->get('/', function($request) {
 });
 
 $router->get('/login', function() {
-    include $_SERVER['DOCUMENT_ROOT'].'/login.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/log_in.php';
   });
-
 
 $router->get('/profile', function($request) {
     return json_encode($request->getParam());

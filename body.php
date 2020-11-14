@@ -1,21 +1,19 @@
 <div x-data="datanya()" x-init="initku()">
-<?php include "loading.php"; ?>
+<?php include "loading_modern.php"; ?>
 
   <div class="mx-auto container mt-5" >
-  <template x-if="enableData">
-    <div class="flex flex-wrap justify-center" x-html="element">
-      <!-- <template x-if="listData" x-for="(list, index) in listData" :key="index">
+  <div class="flex flex-wrap justify-center" >
+      <template x-if="listData" x-for="(list, index) in listData" :key="index">
       <a class="mb-5 mx-5 max-w-sm rounded overflow-hidden border" x-bind:href="'pos/' + listData[index].linking">
-      <img class="w-full h-64 bg-cover text-center overflow-hidden lozad" x-bind:src="listData[index].img">
+      <img class="w-full h-64 bg-cover text-center overflow-hidden loadingGray" x-bind:src="listData[index].img">
         <div class="w-full bg-white p-4 flex flex-col justify-between leading-normal">
           <div class="h-full">
             <div class="text-gray-900 font-bold text-lg mb-2" x-text="listData[index].judul"></div>
           </div>
         </div>
       </a>
-      </template> -->
+      </template>
     </div>
-    </template>
     <ul class="flex list-reset rounded items-center justify-center font-sans mt-5 mb-3" x-html="pagehtml()"></ul>
   </div>
   <?php include "foot.php"; ?>
@@ -57,8 +55,7 @@ function datanya() {
           this.pagin = result;
           this.totalPage = result.totalPage;
           this.page = result.page;
-          
-          this.renderedhtml();
+
           this.enableData = true;
           this.loadShow = false;
 
@@ -121,43 +118,6 @@ function datanya() {
       }
       ready += '<li><button class="block hover:text-white border border-grey-light hover:bg-blue-500 text-blue px-3 py-2" x-on:click="nextPage()">Next</button></li>';
       return ready;
-    },
-    renderedhtml(){
-        
-        this.element = '';
-        let counting = 0;
-        for(let i = 0; i < this.listData.length; i++){
-          let createLink = document.createElement('a');
-          createLink.href = `pos/${this.listData[i].linking}`;
-          createLink.className = 'w-full mb-5 mx-5 max-w-sm rounded overflow-hidden border loadingGray';
-          
-          let createImg = document.createElement('img');
-          createImg.setAttribute('src', this.listData[i].img);
-          createImg.className =  'w-full h-64 bg-cover text-center overflow-hidden';
-          
-          let div1 = document.createElement('div');
-          div1.className = 'w-full bg-white p-4 flex flex-col justify-between leading-normal';
-          
-          let div2 = document.createElement('div');
-          div2.className = 'h-full';
-          
-          let div3 = document.createElement('div');
-          div3.className = 'text-gray-900 font-bold text-lg mb-2';
-          div3.innerText = this.listData[i].judul;
-          
-          div1.appendChild(div2);
-          div2.appendChild(div3);
-
-          createLink.appendChild(createImg);
-          createLink.appendChild(div1);
-
-          this.element += createLink.outerHTML;
-          
-          counting++;
-
-        }
-        
-
     },
     viewPost(param){
       let ahref = document.createElement('a');

@@ -1,7 +1,7 @@
 <?php 
 error_reporting();
 include "../koneksi.php";
-  $halaman = 8;
+  $halaman = 9;
   $page = isset($_GET["pages"]) ? (int)$_GET["pages"] : 1;
   $mulai = ($page>1) ? ($page * $halaman) - $halaman : 0;
   $result = "";
