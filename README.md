@@ -26,3 +26,6 @@ Import small_blog.sql to your database, then change configuration koneksi.php
 username: admin
 
 password: operation12
+
+## Create Password For Admin
+<?php password_hash("passwordyou", PASSWORD_DEFAULT) ?>
