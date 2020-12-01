@@ -28,4 +28,6 @@ username: admin
 password: operation12
 
 ## Create Password For Admin
+```php
 <?php password_hash("passwordyou", PASSWORD_DEFAULT) ?>
+```
