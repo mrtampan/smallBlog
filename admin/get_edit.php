@@ -1,5 +1,8 @@
 <?php 
-include "../koneksi.php";
+$connect = file_get_contents("../.env");
+$dbjson = json_decode($connect);
+$koneksi = mysqli_connect($dbjson->host, $dbjson->username, $dbjson->password, $dbjson->db);
+// include "../koneksi.php";
 
 $idPost = $_GET['edit'];
 $edit = mysqli_query($koneksi, "SELECT a.id_post, a.judul, a.isi, a.img, a.linking, b.id_kategori FROM post a LEFT JOIN kategori b ON a.id_kategori = b.id_kategori WHERE a.id_post=$idPost");

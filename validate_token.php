@@ -1,6 +1,9 @@
 <?php
 // Use JWT TOken
-include "koneksi.php";
+// include "koneksi.php";
+$connect = file_get_contents(".env");
+$dbjson = json_decode($connect);
+$koneksi = mysqli_connect($dbjson->host, $dbjson->username, $dbjson->password, $dbjson->db);
 include_once 'vendor/firebase/php-jwt/src/BeforeValidException.php';
 include_once 'vendor/firebase/php-jwt/src/ExpiredException.php';
 include_once 'vendor/firebase/php-jwt/src/SignatureInvalidException.php';

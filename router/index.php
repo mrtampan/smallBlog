@@ -7,7 +7,7 @@ $router = new Router(new Request);
 $router->get('/', function($request) {
   $searchString = !empty($request->getParam()["search"]) ? $request->getParam()["search"] : "";
   $pageString = !empty($request->getParam()["page"]) ? $request->getParam()["page"] : "";
-  include $_SERVER['DOCUMENT_ROOT'].'/body.php';
+  include $_SERVER['DOCUMENT_ROOT'].'/view/body.php';
   
 });
 
@@ -32,5 +32,5 @@ $router->get('/pos', function($request) {
     return "404 Not Found";
   }
   $linking = $request->getPrefix();
-  include $_SERVER['DOCUMENT_ROOT'].'/detail_post.php';
+  include $_SERVER['DOCUMENT_ROOT'].'/view/detail_post.php';
 });

@@ -9,7 +9,10 @@ use \Firebase\JWT\JWT;
 // end Jwt token
 
 // $koneksi = mysqli_connect("localhost", "root", "", "small_blog");
-include "koneksi.php";
+$connect = file_get_contents(".env");
+$dbjson = json_decode($connect);
+$koneksi = mysqli_connect($dbjson->host, $dbjson->username, $dbjson->password, $dbjson->db);
+// include "koneksi.php";
 if(!isset($_POST['username'], $_POST['password'])){
     $fail = array("success"=>false, "message"=>"Username dan password kosong");
     header('Content-Type: application/json');

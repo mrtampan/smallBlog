@@ -1,5 +1,9 @@
 <?php 
-include "../../koneksi.php";
+
+$connect = file_get_contents("../../.env");
+$dbjson = json_decode($connect);
+$koneksi = mysqli_connect($dbjson->host, $dbjson->username, $dbjson->password, $dbjson->db);
+// include "../../koneksi.php";
   $halaman = 10;
   $page = isset($_GET["pages"]) ? (int)$_GET["pages"] : 1;
   $mulai = ($page>1) ? ($page * $halaman) - $halaman : 0;

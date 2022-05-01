@@ -1,5 +1,8 @@
 <?php
-include "koneksi.php";
+// include "koneksi.php";
+$connect = file_get_contents(".env");
+$dbjson = json_decode($connect);
+$koneksi = mysqli_connect($dbjson->host, $dbjson->username, $dbjson->password, $dbjson->db);
 include "validate_token.php";
 // $koneksi = mysqli_connect("localhost", "root", "", "small_blog");
 $idPost = $_POST['id_post'];

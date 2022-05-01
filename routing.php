@@ -7,10 +7,10 @@ $subfolder = '/smallBlog';
 
 switch ($request) {
     case $subfolder . '/' :
-        require __DIR__ . '/body.php';
+        require __DIR__ . '/view/body.php';
         break;
     case $subfolder . '' :
-        require __DIR__ . '/body.php';
+        require __DIR__ . '/view/body.php';
         break;
     case $subfolder . '/login' :
         require __DIR__ . '/log_in.php';
